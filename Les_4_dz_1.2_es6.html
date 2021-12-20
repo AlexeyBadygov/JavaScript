@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        // Если я все правильно понял:
+        class Post {
+            constructor(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+        
+            edit(text) {
+                this.text = text;
+            }
+        }
+
+        class AttachedPost extends Post {
+            constructor(author, text, date,highlighted) {
+                super(author, text, date);            
+                this.highlighted = false;
+            }
+
+            makeTextHighlighted () {
+            this.highlighted = true;
+            }     
+        }
+    
+        const post1 = new Post('Alex', 'Some_text_1', 'Date_1');
+        const post2 = new Post('John', 'Some_text_2', 'Date_2');
+        
+        console.log(post1);
+        console.log(post2);
+
+        post1.edit('New text_1');
+        post2.edit('New text_2');
+
+        console.log(post1);
+        console.log(post2);
+        
+        
+        const attachedPost1 = new AttachedPost('Mike', 'Some_text_in_attache', 'Date_attache_1');
+        const attachedPost2 = new AttachedPost('Den', 'Some_text_in_attache', 'Date_attache_2');
+        
+        console.log(attachedPost1);
+        console.log(attachedPost2);
+        
+        attachedPost1.makeTextHighlighted();
+        attachedPost2.makeTextHighlighted();
+        
+        console.log(attachedPost1);
+        console.log(attachedPost2);
+    </script>
+ </body>
+</html>
